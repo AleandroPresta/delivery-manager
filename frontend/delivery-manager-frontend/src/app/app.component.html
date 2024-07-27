@@ -4,7 +4,11 @@
 <main class="main">
   <div class="container">
     <h1 class="text-center">Ciao Filippo!</h1>
-    <customers-list></customers-list>
+    <customers-list
+      [customers]="customersList"
+      (editCustomerEmitter)="editCustomer($event)"
+      (deleteCustomerEmitter)="deleteCustomer($event)"
+    ></customers-list>
   </div>
 </main>
 <footer>
