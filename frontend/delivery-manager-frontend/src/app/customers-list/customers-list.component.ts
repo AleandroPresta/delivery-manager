@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Customer } from './Customer';
 import { NgFor } from '@angular/common';
 
@@ -7,7 +7,8 @@ import { NgFor } from '@angular/common';
     standalone: true,
     imports: [NgFor],
     templateUrl: './customers-list.component.html',
-    styleUrl: './customers-list.component.css'
+    styleUrl: './customers-list.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomersListComponent {
 
