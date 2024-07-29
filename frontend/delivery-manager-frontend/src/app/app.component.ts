@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { CustomersListComponent } from "./customers-list/customers-list.component";
 import { Customer } from './customers-list/Customer';
+import { CustomersService } from './customers-list/customers.service';
 
 @Component({
     selector: 'app-root',
@@ -13,16 +14,21 @@ import { Customer } from './customers-list/Customer';
     styleUrl: './app.component.css'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'delivery-manager-frontend';
 
     customersList: Customer[] = [
-        new Customer('John', 'Doe', 30, 'john.doe@gmail.com', '123 Main St'),
-        new Customer('Jane', 'Smith', 25, 'jane.smith@gmail.com', '456 Elm St'),
-        new Customer('Michael', 'Johnson', 40, 'michael.johnson@gmail.com', '789 Oak St'),
-        new Customer('Emily', 'Davis', 35, 'emily.davis@gmail.com', '321 Pine St'),
-        new Customer('David', 'Wilson', 28, 'david.wilson@gmail.com', '654 Birch St')
     ];
+
+    constructor(private customerService: CustomersService) { }
+
+    ngOnInit(): void {
+        this.customerService.getCustomers().subscribe(
+            (customers: Customer[]) => {
+                this.customersList = customers;
+            }
+        );
+    }
 
     editCustomer(customer: Customer) {
         console.log('Edit customer', customer);
