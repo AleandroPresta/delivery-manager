@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://66a77e1a53c13f22a3cff05d.mockapi.io/",
+    "target": "https://raw.githubusercontent.com/AleandroPresta/static-api/master/",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

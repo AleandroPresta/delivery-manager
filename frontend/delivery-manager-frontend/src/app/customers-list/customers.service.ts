@@ -10,6 +10,6 @@ export class CustomersService {
   constructor(private http: HttpClient) { }
 
   getCustomers() {
-    return this.http.get<Customer[]>('/api/v1/customers');
+    return this.http.get<Customer[]>('/api/v1/customers/data.json');
   }
 }
